@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//#include "parameter.h"
+#include "parameter.h"
 
 static bool WithMenu = true;
 
@@ -128,7 +128,7 @@ main (int argc, char* argv[])
                 Value1 = GetInt("Geef waarde voor getal 1: ");
                 Value2 = GetInt("Geef waarde voor getal 2: ");
 
-                //SwapValues(&Value1, &Value2);
+                SwapValues(&Value1, &Value2);
 
                 printf ("SwapValues(): %d, %d\n", Value1, Value2);
                 break;
