@@ -4,14 +4,14 @@ UNITY_FOLDER=../../Unity
 INC_DIRS=
 TEST_INC_DIRS=$(INC_DIRS) -I$(UNITY_FOLDER)
 
-SRC_FILES=$(ASSIGNMENT)_main.c \
-#          $(ASSIGNMENT).c
+SRC_FILES=$(ASSIGNMENT).c \
+          $(ASSIGNMENT)_main.c
           
 TEST_FILES=$(UNITY_FOLDER)/unity.c \
            $(ASSIGNMENT)_test.c \
-#           $(ASSIGNMENT).c
+           $(ASSIGNMENT).c
 
-#HEADER_FILES=*.h
+HEADER_FILES=*.h
 
 TEST = $(ASSIGNMENT)_test
 

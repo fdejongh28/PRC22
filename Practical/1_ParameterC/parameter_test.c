@@ -1,6 +1,6 @@
 #include <string.h>
 
-//#include "parameter.h"
+#include "parameter.h"
 #include "unity.h"
 
 // I rather dislike keeping line numbers updated, so I made my own macro to ditch the line number
@@ -68,7 +68,7 @@ void SwapNormalTester(int OrgA, int OrgB)
 {
     int a = OrgA;
     int b = OrgB;
-    //SwapValues(&a, &b);
+    SwapValues(&a, &b);
     TEST_ASSERT_EQUAL(OrgA, b);
     TEST_ASSERT_EQUAL(OrgB, a);
 }
