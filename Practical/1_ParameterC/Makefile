@@ -4,14 +4,14 @@ UNITY_FOLDER=../../Unity
 INC_DIRS=
 TEST_INC_DIRS=$(INC_DIRS) -I$(UNITY_FOLDER)
 
-SRC_FILES=$(ASSIGNMENT).c \
-          $(ASSIGNMENT)_main.c
-          
+SRC_FILES=$(ASSIGNMENT)_main.c \
+          $(ASSIGNMENT).c
+
 TEST_FILES=$(UNITY_FOLDER)/unity.c \
            $(ASSIGNMENT)_test.c \
            $(ASSIGNMENT).c
 
-HEADER_FILES=*.h
+#HEADER_FILES=*.h
 
 TEST = $(ASSIGNMENT)_test
 
@@ -20,6 +20,7 @@ CC=gcc
 SYMBOLS=-Wall -Werror -pedantic -O2 -std=c99
 TEST_SYMBOLS=$(SYMBOLS) -DTEST
 
+.PHONY: clean test
 
 all: $(ASSIGNMENT) $(TEST)
 
@@ -30,7 +31,7 @@ $(TEST): Makefile $(TEST_FILES)  $(HEADER_FILES)
 	$(CC) $(TEST_INC_DIRS) $(TEST_SYMBOLS) $(TEST_FILES) -o $(TEST)
 
 clean:
-	rm -f $(TARGET) $(TEST)
-	
+	rm -f $(ASSIGNMENT) $(TEST)
+
 test: $(TEST)
 	@./$(TEST)

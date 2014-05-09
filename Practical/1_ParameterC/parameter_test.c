@@ -1,12 +1,19 @@
 #include <string.h>
 
+#ifdef __x86_64__
+  #define UNITY_SUPPORT_64
+  #define CUSTOM_PTR_TEST TEST_ASSERT_EQUAL_HEX64_MESSAGE
+#else
+  #define CUSTOM_PTR_TEST TEST_ASSERT_EQUAL_HEX32_MESSAGE
+#endif
+
 #include "parameter.h"
 #include "unity.h"
 
 // I rather dislike keeping line numbers updated, so I made my own macro to ditch the line number
 #define MY_RUN_TEST(func) RUN_TEST(func, 0)
 
-static int TestArray[] = { 7, 4, 1, 8, 5, 2, 9, 6, 3, 0, 10 };
+int TestArray[] = { 7, 4, 1, 8, 5, 2, 9, 6, 3, 0, 10 };
 static const char* ReferenceEnglish[] = { "seven", "four", "one", "eight", "five", "two", "nine", "six", "three", "zero", "ten" };
 static const char* ReferenceFrench[] = { "sept", "quatre", "un", "huit", "cinq", "deux", "neuf", "six", "trois", "zero", "dix" };
 const char* ReferenceDutch[] = { "zeven", "vier", "een", "acht", "vijf", "twee", "negen", "zes", "drie", "nul", "tien" };
@@ -98,11 +105,11 @@ void SwapPointerTester(int OrgA, int OrgB)
     int b = OrgB;
     int* pa = &a;
     int* pb = &b;
-    //SwapAddresses(&pa, &pb);
+    SwapAddresses(&pa, &pb);
     TEST_ASSERT_EQUAL(OrgA, a);
     TEST_ASSERT_EQUAL(OrgB, b);
-    TEST_ASSERT_EQUAL_HEX32_MESSAGE(&a, pb, "Pointer B check");
-    TEST_ASSERT_EQUAL_HEX32_MESSAGE(&b, pa, "Pointer A check");
+    CUSTOM_PTR_TEST(&a, pb, "Pointer B check");
+    CUSTOM_PTR_TEST(&b, pa, "Pointer A check");
 }
 
 void test_SwapPointerNormalValues(void)
@@ -129,7 +136,7 @@ void test_SwapPointerValuesOneBigOneNegative(void)
 int SumReturnTester(int n)
 {
     int Sum = 0;
-    //Sum = GetSumReturn(TestArray, n);
+    Sum = GetSumReturn(TestArray, n);
     return Sum;
 }
 
@@ -146,7 +153,7 @@ void test_SumReturn(void)
 int SumParameterTester(int n)
 {
     int sum = 0;
-    //GetSumParameter(TestArray, n, &sum);
+    GetSumParameter(TestArray, n, &sum);
     return sum;
 }
 
@@ -165,15 +172,15 @@ void TranslationTest(char* Language (int Index), int NrTranslations, const char*
 {
     char* Result[sizeof(TestArray)/sizeof(TestArray[0])];
     int i = 0;
-    
+
     // clear complete array
     for (i = 0; i < 11; i++)
     {
         Result[i] = "";
     }
-    
-    //Translate(Language, TestArray, NrTranslations, Result);
-    
+
+    Translate(Language, TestArray, NrTranslations, Result);
+
     for (i = 0; i < 11; i++)
     {
         if (i < NrTranslations)
@@ -199,7 +206,7 @@ void test_TranslateFrenchFullArray(void)
 
 void test_TranslateDutchFullArray(void)
 {
-    //TranslationTest(Dutch, 11, ReferenceDutch);
+    TranslationTest(Dutch, 11, ReferenceDutch);
 }
 
 void test_TranslateEnglishThreeValues(void)
@@ -214,7 +221,7 @@ void test_TranslateFrenchThreeValues(void)
 
 void test_TranslateDutchThreeValues(void)
 {
-    //TranslationTest(Dutch, 3, ReferenceDutch);
+    TranslationTest(Dutch, 3, ReferenceDutch);
 }
 
 void test_TranslateEnglishZeroValues(void)
@@ -229,7 +236,7 @@ void test_TranslateFrenchZeroValues(void)
 
 void test_TranslateDutchZeroValues(void)
 {
-    //TranslationTest(Dutch, 0, ReferenceDutch);
+    TranslationTest(Dutch, 0, ReferenceDutch);
 }
 
 /*
@@ -237,36 +244,36 @@ void test_TranslateDutchZeroValues(void)
  * This is done for a good reason: it allows for selective switching on tests. If these
  * functions were static, compiling with the -Wall and -Werror compiler flags would give
  * 'defined but not used' errors, which wouldn't allow switching tests one one by one.
- * 
+ *
  * Switch the tests below on one by one, implement only functionality to satisfy the test
  * (while making sure previous tests keep working)
  */
 int main(void)
 {
     UnityBegin();
-    
+
     MY_RUN_TEST(test_SwapNormalValues);
-    //MY_RUN_TEST(test_SwapValuesOneZero);
-    //MY_RUN_TEST(test_SwapValuesOneZeroOneBig);
-    //MY_RUN_TEST(test_SwapValuesOneBigOneNegative);
-    
-    //MY_RUN_TEST(test_SwapPointerNormalValues);
-    //MY_RUN_TEST(test_SwapPointerValuesOneZero);
-    //MY_RUN_TEST(test_SwapPointerValuesOneZeroOneBig);
-    //MY_RUN_TEST(test_SwapPointerValuesOneBigOneNegative);
-    
-    //MY_RUN_TEST(test_SumReturn);
-    //MY_RUN_TEST(test_SumParameter);
-    
-    //MY_RUN_TEST(test_TranslateEnglishFullArray);
-    //MY_RUN_TEST(test_TranslateFrenchFullArray);
-    //MY_RUN_TEST(test_TranslateDutchFullArray);
-    //MY_RUN_TEST(test_TranslateEnglishThreeValues);
-    //MY_RUN_TEST(test_TranslateFrenchThreeValues);
-    //MY_RUN_TEST(test_TranslateDutchThreeValues);
-    //MY_RUN_TEST(test_TranslateEnglishZeroValues);
-    //MY_RUN_TEST(test_TranslateFrenchZeroValues);
-    //MY_RUN_TEST(test_TranslateDutchZeroValues);
-    
+    MY_RUN_TEST(test_SwapValuesOneZero);
+    MY_RUN_TEST(test_SwapValuesOneZeroOneBig);
+    MY_RUN_TEST(test_SwapValuesOneBigOneNegative);
+
+    MY_RUN_TEST(test_SwapPointerNormalValues);
+    MY_RUN_TEST(test_SwapPointerValuesOneZero);
+    MY_RUN_TEST(test_SwapPointerValuesOneZeroOneBig);
+    MY_RUN_TEST(test_SwapPointerValuesOneBigOneNegative);
+
+    MY_RUN_TEST(test_SumReturn);
+    MY_RUN_TEST(test_SumParameter);
+
+    MY_RUN_TEST(test_TranslateEnglishFullArray);
+    MY_RUN_TEST(test_TranslateFrenchFullArray);
+    MY_RUN_TEST(test_TranslateDutchFullArray);
+    MY_RUN_TEST(test_TranslateEnglishThreeValues);
+    MY_RUN_TEST(test_TranslateFrenchThreeValues);
+    MY_RUN_TEST(test_TranslateDutchThreeValues);
+    MY_RUN_TEST(test_TranslateEnglishZeroValues);
+    MY_RUN_TEST(test_TranslateFrenchZeroValues);
+    MY_RUN_TEST(test_TranslateDutchZeroValues);
+
     return UnityEnd();
 }
