@@ -136,33 +136,33 @@ main (int argc, char* argv[])
                 Value1 = GetInt("Geef waarde voor getal 1: ");
                 Value2 = GetInt("Geef waarde voor getal 2: ");
 
-                //SwapAddresses(&ptrA, &ptrB);
+                SwapAddresses(&ptrA, &ptrB);
 
                 printf("SwapAddresses(): %d, %d\n", *ptrA, *ptrB);
                 break;
             case 3:
                 n = GetInt("Geef waarde voor n: ");
-                //Sum = GetSumReturn (z, n);
+                Sum = GetSumReturn (z, n);
                 printf ("GetSumReturn(%d): %d\n", n, Sum);
                 break;
             case 4:
                 n = GetInt("Geef waarde voor n: ");
-                //GetSumParameter (z, n, &Sum);
+                GetSumParameter (z, n, &Sum);
                 printf ("GetSumParameter(%d): %d\n", n, Sum);
                 break;
             case 5:
                 n = GetInt("Geef waarde voor n: ");
-                //Translate(English, z, n, Translations);
+                Translate(English, z, n, Translations);
                 PrintTranslations(z, Translations, n);
                 break;
             case 6:
                 n = GetInt("Geef waarde voor n: ");
-                //Translate(French, z, n, Translations);
+                Translate(French, z, n, Translations);
                 PrintTranslations(z, Translations, n);
                 break;
             case 7:
                 n = GetInt("Geef waarde voor n: ");
-                //Translate (Dutch, z, n, Translations);
+                Translate (Dutch, z, n, Translations);
                 PrintTranslations(z, Translations, n);
                 break;
             case 8:
