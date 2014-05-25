@@ -45,18 +45,18 @@ STUDENT FillStudentProperties(int Nr, char* Name, int StudyResult)
     return Student;
 }
 
-//static void test_ReadElementParameters(void)
-//{
-//    STUDENT Student = {-1987, "ThisIsAReallyWeirdName", 12317462};
-//    FILE* FilePtr = (FILE*)1; // dirty trick to get a pointer that is not NULL, the (FILE*) is a cast to type FILE*
-//
-//    TEST_ASSERT_EQUAL(-1, ReadElement(FilePtr, 231, NULL));
-//    TEST_ASSERT_EQUAL(-1, ReadElement(NULL, 87, NULL));
-//    TEST_ASSERT_EQUAL(-1, ReadElement(NULL, 1, &Student));
-//
-//    // and test if the Student parameter is not modified
-//    StudentPropertiesValidation(-1987, "ThisIsAReallyWeirdName", 12317462, &Student);
-//}
+static void test_ReadElementParameters(void)
+{
+    STUDENT Student = {-1987, "ThisIsAReallyWeirdName", 12317462};
+    FILE* FilePtr = (FILE*)1; // dirty trick to get a pointer that is not NULL, the (FILE*) is a cast to type FILE*
+
+    TEST_ASSERT_EQUAL(-1, ReadElement(FilePtr, 231, NULL));
+    TEST_ASSERT_EQUAL(-1, ReadElement(NULL, 87, NULL));
+    TEST_ASSERT_EQUAL(-1, ReadElement(NULL, 1, &Student));
+
+    // and test if the Student parameter is not modified
+    StudentPropertiesValidation(-1987, "ThisIsAReallyWeirdName", 12317462, &Student);
+}
 
 void test_ReadElementEmptyFile(void)
 {
@@ -419,7 +419,7 @@ void test_AddAndRemoveStudents(void)
 
     fclose(FilePtr);
     FilePtr = NULL;
-
+/*
     // remove some students
     TEST_ASSERT_EQUAL(0, RemoveStudentFromFile(NEW_FILE, 20));
     TEST_ASSERT_EQUAL(-1, RemoveStudentFromFile(NEW_FILE, 19));
@@ -438,7 +438,7 @@ void test_AddAndRemoveStudents(void)
     StudentPropertiesValidation(40, "Maassen", 60, &Student);
     TEST_ASSERT_EQUAL(0, ReadElement(FilePtr, 2, &Student)); // no 3rd element available
     StudentPropertiesValidation(40, "Maassen", 60, &Student);
-
+*/
     fclose(FilePtr);
     FilePtr = NULL;
 
@@ -459,14 +459,14 @@ int main (int argc, char * argv[])
 {
     UnityBegin();
 
-    //MY_RUN_TEST(test_ReadElementParameters);
+    MY_RUN_TEST(test_ReadElementParameters);
     MY_RUN_TEST(test_ReadElementEmptyFile);
     MY_RUN_TEST(test_ReadElementValidFile);
     MY_RUN_TEST(test_ReadElementInvalidFile1);
     MY_RUN_TEST(test_ReadElementInvalidFile2);
 
-    //MY_RUN_TEST(test_WriteElementParameters);
-    //MY_RUN_TEST(test_WriteElement);
+    MY_RUN_TEST(test_WriteElementParameters);
+    MY_RUN_TEST(test_WriteElement);
 
     MY_RUN_TEST(test_ComputeAverageParameters);
     MY_RUN_TEST(test_ComputeAverageInNonExistingFile);
@@ -489,7 +489,7 @@ int main (int argc, char * argv[])
     MY_RUN_TEST(test_BinarySearchValuesBeforeFirst);
     MY_RUN_TEST(test_BinarySearchValuesBeyondLast);
 
-    //MY_RUN_TEST(test_AddStudentParameters);
+    MY_RUN_TEST(test_AddStudentParameters);
     //MY_RUN_TEST(test_RemoveStudentParameters);
     //MY_RUN_TEST(test_AddAndRemoveStudents);
 

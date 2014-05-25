@@ -126,56 +126,100 @@ int CompareStudents(const void *a, const void *b)
 
 int ReadElement(FILE* FilePtr, int ElementNr, STUDENT* StudentPtr)
 {
-    int result = 0;
+    // int result = 0;
 
-    if (FilePtr != NULL)
-    {
-        fseek(FilePtr, 0, SEEK_END);
-        int total_file_size = ftell(FilePtr);
-        rewind(FilePtr);
+    // if (FilePtr != NULL)
+    // {
+    //     fseek(FilePtr, 0, SEEK_END);
+    //     int total_file_size = ftell(FilePtr);
+    //     rewind(FilePtr);
 
-        int total_students = total_file_size / sizeof(STUDENT);
+    //     int total_students = total_file_size / sizeof(STUDENT);
 
-        if (total_students > 0)
-        {
-            if (ElementNr < total_students)
-            {
-                fseek(FilePtr, ElementNr * sizeof(STUDENT), SEEK_SET);
-                STUDENT stdnt = {0, "", 0};
-                if (-1 != fread(&stdnt, sizeof(STUDENT), 1, FilePtr))
-                {
-                    *StudentPtr = stdnt;
-                    result = 1;
-                }
-                else
-                {
-                    result = -1;
-                }
-            }
-            else
-            {
-                result = 0;
-            }
-        }
-        else
-        {
-            result = 0;
-        }
+    //     if (total_students > 0)
+    //     {
+    //         if (ElementNr < total_students)
+    //         {
+    //             fseek(FilePtr, ElementNr * sizeof(STUDENT), SEEK_SET);
+    //             STUDENT stdnt = {0, "", 0};
+    //             if (-1 != fread(&stdnt, sizeof(STUDENT), 1, FilePtr))
+    //             {
+    //                 *StudentPtr = stdnt;
+    //                 result = 1;
+    //             }
+    //             else
+    //             {
+    //                 result = -1;
+    //             }
+    //         }
+    //         else
+    //         {
+    //             result = 0;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         result = 0;
+    //     }
 
+    // }
+    // else
+    // {
+    //     // Bestands fout
+    //     result = -1;
+    // }
+
+    // return result;
+
+    int Result = 0;
+
+    if ( FilePtr != NULL && StudentPtr != NULL)
+	{
+		// student size
+		size_t size = sizeof(STUDENT);
+
+		// buffer for student data
+		STUDENT temp;
+
+		// go to student
+		fseek (FilePtr , ElementNr * size , SEEK_SET );
+
+		//read into student buffer
+		size_t res;
+    	res = fread(&temp, size, 1, FilePtr);
+
+    	// if elemet read succeeded, store into student pointer
+    	if(res == 1) {  		
+    		*StudentPtr = temp;
+    		Result = 1;
+    	}
     }
-    else
-    {
-        // Bestands fout
-        result = -1;
+    else {
+    	// error
+    	Result = -1;
     }
 
-    return result;
+    return Result;
 }
 
 int WriteElement(FILE* FilePtr, int ElementNr, const STUDENT* StudentPtr)
 {
-    int result = 0;
-    return result;
+    int Result = 0;
+    
+    if ( FilePtr != NULL && StudentPtr != NULL)
+	{
+		// student size
+		size_t size = sizeof(STUDENT);
+
+		// write into file
+		fwrite (StudentPtr, size, 1, FilePtr);
+    }
+    else {
+    	// error
+    	Result = -1;
+    }
+
+    return Result;
 }
 
 int ComputeAverageStudyResults (char* FileName, double* Average)
@@ -371,9 +415,76 @@ int BinarySearchStudentsFile (char* FileName, int Number, STUDENT* StudentPtr)
 
 int AddStudentSortedToFile (char* FileName, STUDENT* StudentPtr)
 {
-    int result = 0;
+    int Result = 8;
 
-    return result;
+    if (FileName != NULL && StudentPtr != NULL)
+    {
+    	// open file to create if not exists
+    	FILE *FilePtr = fopen(FileName, "ab+");
+    	fclose(FilePtr);
+
+    	// student buffer
+    	STUDENT* Student = NULL;
+
+    	// get student number
+    	STUDENT Stud = *StudentPtr;
+    	int StudentNumber = Stud.StudentNumber;
+
+    	// check if student exitst by return val of search
+    	int StudentExists = LinearSearchStudentsFile (FileName, StudentNumber, Student);
+
+    	if(Student->StudentNumber != StudentNumber && StudentExists) {
+	    	// count students
+	    	int StudentCount = CountStudents(FileName);
+
+	    	// init array
+	    	STUDENT Students[StudentCount];
+
+	    	// get student array
+	    	int StudentArray = CreateStudentsArray(FileName, StudentCount, Students);
+
+	    	if(StudentArray != -1) {
+
+	    		// add student to the end of file
+	    		Students[StudentCount+1] = *StudentPtr;
+
+	    		// sort students
+	    		qsort(Students, StudentCount, sizeof(STUDENT), CompareStudents);
+
+	    		// open file
+	    		FILE *FilePtr = fopen(FileName, "ab+");
+
+		        // check if opened
+		        if (FilePtr != NULL)
+		        {
+		        	// write into file
+		        	WriteElement(FilePtr, 1, Students);
+
+		        	// close file
+		        	fclose(FilePtr);
+
+		        	Result = 1;
+				}
+				else
+				{
+					Result = -1;
+				}
+			}
+			else
+			{
+				Result = -1;
+			}
+		}
+		else
+		{
+			Result = 0;
+		}
+	}
+	else {
+		Result = -1;
+	}
+
+    return Result;
 }
 
 
