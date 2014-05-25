@@ -492,8 +492,56 @@ int RemoveStudentFromFile (char* FileName, int StudentNumber)
 {
     int Result = 0;
 
-    // TODO: implement
+    if (FileName != NULL)
+    {
+        int total_students = CountStudents(FileName);
+
+        STUDENT students[total_students];
+        if (-1 != CreateStudentsArray(FileName, total_students, students))
+        {
+            STUDENT target;
+            if (0 == BinarySearchStudentsFile(FileName, StudentNumber, &target))
+            {
+                STUDENT new_array[total_students - 1];
+                int i = 0;
+                int min = 0;
+                for (; i < total_students - 1; i++)
+                {
+                    if (students[i].StudentNumber == target.StudentNumber)
+                    {
+                        min++;
+                    }
+                    else
+                    {
+                        new_array[i - min] = students[i];
+                    }
+                }
+                FILE *file_ptr = fopen(FileName, "w");
+                if (file_ptr != NULL)
+                {
+                    if (-1 != fwrite(new_array, sizeof(new_array), 1, file_ptr))
+                    {
+                        Result = -1;
+                    }
+
+                    fclose(file_ptr);
+                }
+
+            }
+            else
+            {
+                Result = -1;
+            }
+        }
+        else
+        {
+            Result = -1;
+        }
+    }
+    else
+    {
+        Result = -1;
+    }
     
     return Result;
 }
-

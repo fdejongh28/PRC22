@@ -490,8 +490,8 @@ int main (int argc, char * argv[])
     MY_RUN_TEST(test_BinarySearchValuesBeyondLast);
 
     MY_RUN_TEST(test_AddStudentParameters);
-    //MY_RUN_TEST(test_RemoveStudentParameters);
-    //MY_RUN_TEST(test_AddAndRemoveStudents);
+    MY_RUN_TEST(test_RemoveStudentParameters);
+    MY_RUN_TEST(test_AddAndRemoveStudents);
 
     return UnityEnd();
 }
