@@ -419,7 +419,7 @@ void test_AddAndRemoveStudents(void)
 
     fclose(FilePtr);
     FilePtr = NULL;
-/*
+
     // remove some students
     TEST_ASSERT_EQUAL(0, RemoveStudentFromFile(NEW_FILE, 20));
     TEST_ASSERT_EQUAL(-1, RemoveStudentFromFile(NEW_FILE, 19));
@@ -438,7 +438,7 @@ void test_AddAndRemoveStudents(void)
     StudentPropertiesValidation(40, "Maassen", 60, &Student);
     TEST_ASSERT_EQUAL(0, ReadElement(FilePtr, 2, &Student)); // no 3rd element available
     StudentPropertiesValidation(40, "Maassen", 60, &Student);
-*/
+
     fclose(FilePtr);
     FilePtr = NULL;
 
