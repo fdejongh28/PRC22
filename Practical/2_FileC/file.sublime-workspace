@@ -1,0 +1,187 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 313.0,
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/wouter/Documenten/dingen.txt",
+		"/home/wouter/Documenten/auth/src/com/google/android/gms/auth/sample/helloauth/MainActivity.java",
+		"/home/wouter/Documenten/Overflow/app/src/main/res/values-v19/styles.xml",
+		"/home/wouter/Documenten/Overflow/app/build.gradle",
+		"/home/wouter/.zshrc",
+		"/usr/share/themes/Moka/gnome-shell/gnome-shell.css",
+		"/home/wouter/Downloads/apktool1.5.2/Music2/res/xml/widget_nowplaying_small.xml",
+		"/home/wouter/Downloads/apktool1.5.2/Music2/res/layout/widget_nowplaying_large.xml",
+		"/home/wouter/layout/widget_nowplaying_large.xml",
+		"/home/wouter/items.json",
+		"/home/wouter/Documenten/Broncode/Overflow/app/src/main/res/drawable/bg_card.xml",
+		"/home/wouter/Documenten/Broncode/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/Example_01_LCD/makefile",
+		"/home/wouter/Downloads/RP6_master.rtf",
+		"/home/wouter/.local/share/applications/Robot Loader.desktop",
+		"/home/wouter/Downloads/robotloader/robotloader_linux_x64.sh",
+		"/home/wouter/Documenten/Fontys/PRC22/Classroom/w1-1_pointer.c",
+		"/home/wouter/Documenten/Fontys/PRC22/Classroom/w1-2_function.c",
+		"/home/wouter/Documenten/Fontys/PRC22/test.c",
+		"/home/wouter/.local/share/applications/Arduino IDE.desktop",
+		"/opt/arduino/lib/arduino_icon.ico",
+		"/home/wouter/Documenten/Broncode/Arduino/test/test.ino",
+		"/home/wouter/Bureaublad/Steam.desktop",
+		"/home/wouter/Bureaublad/TrackMania Nations Forever.desktop",
+		"/home/wouter/steam.sh",
+		"/home/wouter/rafix.reg.",
+		"/home/wouter/.PlayOnLinux/wineprefix/RA2/drive_c/Program Files/Red Alert 2 Yuri's Revenge/RA2.INI",
+		"/home/wouter/Documenten/Broncode/CTest/test.c",
+		"/home/wouter/Documenten/Broncode/CTest/untitled"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "file.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

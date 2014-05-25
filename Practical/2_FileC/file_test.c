@@ -469,18 +469,18 @@ int main (int argc, char * argv[])
     //MY_RUN_TEST(test_WriteElement);
 
     MY_RUN_TEST(test_ComputeAverageParameters);
-    //MY_RUN_TEST(test_ComputeAverageInNonExistingFile);
-    //MY_RUN_TEST(test_ComputeAverageInEmptyFile);
-    //MY_RUN_TEST(test_ComputeAverageInValidFile);
-    //MY_RUN_TEST(test_ComputeAverageInCorruptFile1);
-    //MY_RUN_TEST(test_ComputeAverageInCorruptFile2);
+    MY_RUN_TEST(test_ComputeAverageInNonExistingFile);
+    MY_RUN_TEST(test_ComputeAverageInEmptyFile);
+    MY_RUN_TEST(test_ComputeAverageInValidFile);
+    MY_RUN_TEST(test_ComputeAverageInCorruptFile1);
+    MY_RUN_TEST(test_ComputeAverageInCorruptFile2);
 
-    //MY_RUN_TEST(test_LineairSearchNonExistingFile);
-    //MY_RUN_TEST(test_LineairSearchParameters);
-    //MY_RUN_TEST(test_LineairSearchMatches);
-    //MY_RUN_TEST(test_LineairSearchInBetweenValues);
-    //MY_RUN_TEST(test_LineairSearchValuesBeforeFirst);
-    //MY_RUN_TEST(test_LineairSearchValuesBeyondLast);
+    MY_RUN_TEST(test_LineairSearchNonExistingFile);
+    MY_RUN_TEST(test_LineairSearchParameters);
+    MY_RUN_TEST(test_LineairSearchMatches);
+    MY_RUN_TEST(test_LineairSearchInBetweenValues);
+    MY_RUN_TEST(test_LineairSearchValuesBeforeFirst);
+    MY_RUN_TEST(test_LineairSearchValuesBeyondLast);
 
     //MY_RUN_TEST(test_BinarySearchNonExistingFile);
     //MY_RUN_TEST(test_BinarySearchParameters);
