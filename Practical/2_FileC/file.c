@@ -126,17 +126,56 @@ int CompareStudents(const void *a, const void *b)
 
 int ReadElement(FILE* FilePtr, int ElementNr, STUDENT* StudentPtr)
 {
-    int Result = 0;
-    return Result;
+    int result = 0;
+
+    if (FilePtr != NULL)
+    {
+        fseek(FilePtr, 0, SEEK_END);
+        int total_file_size = ftell(FilePtr);
+        rewind(FilePtr);
+
+        int total_students = total_file_size / sizeof(STUDENT);
+
+        if (total_students > 0)
+        {
+            if (ElementNr < total_students)
+            {
+                fseek(FilePtr, ElementNr * sizeof(STUDENT), SEEK_SET);
+                STUDENT stdnt = {0, "", 0};
+                if (-1 != fread(&stdnt, sizeof(STUDENT), 1, FilePtr))
+                {
+                    *StudentPtr = stdnt;
+                    result = 1;
+                }
+                else
+                {
+                    result = -1;
+                }
+            }
+            else
+            {
+                result = 0;
+            }
+        }
+        else
+        {
+            result = 0;
+        }
+
+    }
+    else
+    {
+        // Bestands fout
+        result = -1;
+    }
+
+    return result;
 }
 
 int WriteElement(FILE* FilePtr, int ElementNr, const STUDENT* StudentPtr)
 {
-    int Result = 0;
-    
-    // TODO: implement
-
-    return Result;
+    int result = 0;
+    return result;
 }
 
 int ComputeAverageStudyResults (char* FileName, double* Average)
