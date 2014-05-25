@@ -166,6 +166,9 @@ int WriteElement(FILE* FilePtr, int ElementNr, const STUDENT* StudentPtr)
 		// student size
 		size_t size = sizeof(STUDENT);
 
+		// go to element
+		fseek (FilePtr , ElementNr * size , SEEK_SET );
+
 		// write into file
 		fwrite (StudentPtr, size, 1, FilePtr);
     }
@@ -360,26 +363,28 @@ int AddStudentSortedToFile (char* FileName, STUDENT* StudentPtr)
 
     if (FileName != NULL && StudentPtr != NULL)
     {
-    	// open file to create if not exists
+    	// open file and create if not exists
     	FILE *FilePtr = fopen(FileName, "ab+");
     	fclose(FilePtr);
 
     	// student buffer
-    	STUDENT* Student = NULL;
+    	STUDENT stdnt = {50, "", 0};
+    	STUDENT* Student = &stdnt;
 
     	// get student number
     	STUDENT Stud = *StudentPtr;
     	int StudentNumber = Stud.StudentNumber;
 
-    	// check if student exitst by return val of search
-    	int StudentExists = LinearSearchStudentsFile (FileName, StudentNumber, Student);
+    	// get student item by search
+    	LinearSearchStudentsFile (FileName, StudentNumber, Student);
+    	STUDENT Stud1 = *Student;
 
-    	if(Student.StudentNumber != StudentNumber && StudentExists) {
+    	if(Stud1.StudentNumber != StudentNumber) {
 	    	// count students
 	    	int StudentCount = CountStudents(FileName);
 
 	    	// init array
-	    	STUDENT Students[StudentCount];
+	    	STUDENT Students[StudentCount+1];
 
 	    	// get student array
 	    	int StudentArray = CreateStudentsArray(FileName, StudentCount, Students);
@@ -387,19 +392,22 @@ int AddStudentSortedToFile (char* FileName, STUDENT* StudentPtr)
 	    	if(StudentArray != -1) {
 
 	    		// add student to the end of file
-	    		Students[StudentCount+1] = *StudentPtr;
+	    		Students[StudentCount] = *StudentPtr;
 
 	    		// sort students
 	    		qsort(Students, StudentCount, sizeof(STUDENT), CompareStudents);
 
 	    		// open file
-	    		FILE *FilePtr = fopen(FileName, "ab+");
+	    		FILE *FilePtr = fopen(FileName, "wb+");
 
 		        // check if opened
 		        if (FilePtr != NULL)
 		        {
 		        	// write into file
-		        	WriteElement(FilePtr, 1, Students);
+		        	int i = 0;
+		        	for(;i<StudentCount+1;i++){
+		        		WriteElement(FilePtr, i, &Students[i]);
+		        	}
 
 		        	// close file
 		        	fclose(FilePtr);
