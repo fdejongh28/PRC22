@@ -290,7 +290,21 @@ int BinarySearchStudentsFile (char* FileName, int Number, STUDENT* StudentPtr)
             if (create_result >= 0)
             {
                 qsort(students, total_students, sizeof(STUDENT), *CompareStudents);
-                //STUDENT *res = 
+                STUDENT key;
+                key.StudentNumber = Number;
+                STUDENT *res = bsearch(&key, students, total_students, sizeof(STUDENT), CompareStudents);
+
+                if (res != NULL)
+                {
+                    printf("Nummer %d gevonden op %d. ", Number, res->StudentNumber);
+                    result = 0;
+                    StudentPtr = res;
+                    printf("Ptr nummer: %d\n", StudentPtr->StudentNumber);
+                }
+                else
+                {
+                    result = -1;
+                }
             }
             else
             {

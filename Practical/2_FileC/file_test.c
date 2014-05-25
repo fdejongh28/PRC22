@@ -482,12 +482,12 @@ int main (int argc, char * argv[])
     MY_RUN_TEST(test_LineairSearchValuesBeforeFirst);
     MY_RUN_TEST(test_LineairSearchValuesBeyondLast);
 
-    //MY_RUN_TEST(test_BinarySearchNonExistingFile);
-    //MY_RUN_TEST(test_BinarySearchParameters);
-    //MY_RUN_TEST(test_BinarySearchMatches);
-    //MY_RUN_TEST(test_BinarySearchInBetweenValues);
-    //MY_RUN_TEST(test_BinarySearchValuesBeforeFirst);
-    //MY_RUN_TEST(test_BinarySearchValuesBeyondLast);
+    MY_RUN_TEST(test_BinarySearchNonExistingFile);
+    MY_RUN_TEST(test_BinarySearchParameters);
+    MY_RUN_TEST(test_BinarySearchMatches);
+    MY_RUN_TEST(test_BinarySearchInBetweenValues);
+    MY_RUN_TEST(test_BinarySearchValuesBeforeFirst);
+    MY_RUN_TEST(test_BinarySearchValuesBeyondLast);
 
     //MY_RUN_TEST(test_AddStudentParameters);
     //MY_RUN_TEST(test_RemoveStudentParameters);
