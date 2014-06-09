@@ -33,8 +33,36 @@ SteganoGetSubstring (uint8_t Src, uint8_t SrcPos, uint8_t NrOfBits, uint8_t Dest
  *      substring, starting at DestPos
  */
 {
-    // to be implemented
-    return 0;
+
+    // init variables
+    uint8_t Mask = 0;
+    uint8_t Out = 0;
+
+    // create the mask (just te number of 1's - example if NrOfBits = 4 it will generate 00001111)
+    int i = 0;
+    for (; i < NrOfBits; i++)
+    {
+
+        Mask |= (1 << i);
+    }
+
+    // shift the mask to the right startposition
+    Mask = Mask << SrcPos;
+
+    // apply the mask on the source, removing all unwanted bits
+    Out = Src & Mask;
+
+    // shift the bits to the right destination place
+    if(SrcPos - DestPos > 0)
+    {
+        Out = Out >> (SrcPos - DestPos);
+    }
+    else
+    {
+        Out = Out << abs(SrcPos - DestPos);
+    }
+    
+    return Out;
 }
 
 
