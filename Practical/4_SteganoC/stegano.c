@@ -81,7 +81,19 @@ ReadHdr (FILE* FilePtr, BMP_MAGIC_t* Magic, BMP_FILE_t* File, BMP_INFO_t* Info)
  * Note: caller should provide enough memory for parameters 'Magic', 'File' and 'Info'
  */
 {
-    // to be implemented
+    if (FilePtr != NULL && Magic != NULL && File != NULL && Info != NULL)
+    {
+        if (-1 != fread(Magic, sizeof(BMP_MAGIC_t), 1, FilePtr))
+        {
+            if (-1 != fread(File, sizeof(BMP_FILE_t), 1, FilePtr))
+            {
+                if (-1 != fread(Info, sizeof(BMP_INFO_t), 1, FilePtr))
+                {
+                    
+                }
+            }
+        }
+    }
 }
 
 
@@ -99,7 +111,19 @@ WriteHdr (FILE* FilePtr, BMP_MAGIC_t* Magic, BMP_FILE_t* File, BMP_INFO_t* Info)
  *
  */
 {
-    // to be implemented
+    if (FilePtr != NULL && Magic != NULL && File != NULL && Info != NULL)
+    {
+        if (-1 != fwrite(Magic, sizeof(BMP_MAGIC_t), 1, FilePtr))
+        {
+            if (-1 != fwrite(File, sizeof(BMP_FILE_t), 1, FilePtr))
+            {
+                if (-1 != fwrite(Info, sizeof(BMP_INFO_t), 1, FilePtr))
+                {
+                    
+                }
+            }
+        }
+    }
 }
 
 
