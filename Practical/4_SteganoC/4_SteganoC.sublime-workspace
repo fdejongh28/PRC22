@@ -1,0 +1,536 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Ste",
+				"SteganoDemultiplex"
+			],
+			[
+				"Stegano",
+				"SteganoMultiplex"
+			],
+			[
+				"image",
+				"image1Info"
+			],
+			[
+				"creat",
+				"creator2"
+			],
+			[
+				"imag",
+				"image0Magic"
+			],
+			[
+				"Wri",
+				"WriteHdr"
+			],
+			[
+				"BM",
+				"BMP_FILE_t"
+			],
+			[
+				"cre",
+				"creator2"
+			],
+			[
+				"creator",
+				"creator2"
+			],
+			[
+				"uint",
+				"uint16_t"
+			],
+			[
+				"Nr",
+				"NrBits"
+			],
+			[
+				"pixel",
+				"pixel0"
+			],
+			[
+				"File",
+				"FilePtr0"
+			],
+			[
+				"FilePt",
+				"FilePtr0"
+			],
+			[
+				"hei",
+				"height"
+			],
+			[
+				"image2",
+				"image2File"
+			],
+			[
+				"p",
+				"pixel"
+			],
+			[
+				"wid",
+				"widthI"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"ima",
+				"image1Width"
+			],
+			[
+				"iamge",
+				"image1Height"
+			],
+			[
+				"int",
+				"int32_t"
+			],
+			[
+				"read",
+				"ReadHdr"
+			],
+			[
+				"BMP",
+				"BMP_FILE_t"
+			],
+			[
+				"Sr",
+				"SrcPos"
+			],
+			[
+				"u",
+				"uint8_t"
+			],
+			[
+				"dist",
+				"distanceRightBack"
+			],
+			[
+				"dista",
+				"distanceLeftBack"
+			],
+			[
+				"dis",
+				"distanceLeftFront"
+			],
+			[
+				"distan",
+				"distanceRightBack"
+			],
+			[
+				"diff",
+				"differenceLeft"
+			],
+			[
+				"wri",
+				"writeIntegerLCD"
+			],
+			[
+				"distance",
+				"distanceRightBack"
+			],
+			[
+				"distanceLef",
+				"distanceLeftBack"
+			],
+			[
+				"moto",
+				"motorRight"
+			],
+			[
+				"set",
+				"setCursorPosLCD"
+			],
+			[
+				"writ",
+				"writeIntegerLCD"
+			],
+			[
+				"lcd",
+				"distanceToLCD"
+			],
+			[
+				"spe",
+				"speedRight"
+			],
+			[
+				"spee",
+				"speedLeft_expected"
+			],
+			[
+				"wr",
+				"writeInteger"
+			],
+			[
+				"write",
+				"writeString_P"
+			],
+			[
+				"get",
+				"getMicrophonePeak"
+			],
+			[
+				"inpu",
+				"inputRight"
+			],
+			[
+				"input",
+				"inputLeft"
+			],
+			[
+				"Studen",
+				"STUDENT"
+			],
+			[
+				"total",
+				"total_students"
+			],
+			[
+				"stu",
+				"students"
+			],
+			[
+				"file",
+				"file_ptr"
+			],
+			[
+				"tot",
+				"total_students"
+			],
+			[
+				"num",
+				"number_b"
+			],
+			[
+				"number",
+				"number_a"
+			],
+			[
+				"St",
+				"StudentPtr"
+			],
+			[
+				"rea",
+				"read_result"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/wouter/Documenten/rp6/RP6Examples_20080510/WK4/main.c",
+			"settings":
+			{
+				"buffer_size": 5289,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"command_palette":
+	{
+		"height": 92.0,
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"exit",
+			"quit",
+			"q",
+			"make clean",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/WK6/main.c",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/stegano.c",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/stegano_main.c",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/bmp.h",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/notulen.txt",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/stegano.h",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/b.bmp",
+		"/home/wouter/.config/sublime-text-3/Packages/User/Stegano_test.sublime-build",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/TextFontys.txt",
+		"/home/wouter/notulen.txt",
+		"/home/wouter/Documenten/dingen.txt",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/testtest.c",
+		"/home/wouter/Documenten/PRC22/Practical/4_SteganoC/stegano_test.c",
+		"/home/wouter/Downloads/rules.yml",
+		"/home/wouter/Downloads/magic.yml",
+		"/home/wouter/Downloads/config.yml",
+		"/home/wouter/Documenten/google_account_data.json",
+		"/home/wouter/Documenten/Overflow/changelog.md",
+		"/home/wouter/Documenten/PRC22/Practical/2_FileC/file.c",
+		"/home/wouter/Dropbox/Fontys Factory 2 Warehouse/taakverdeling FF2.txt",
+		"/home/wouter/Documenten/PRC22/Practical/1_ParameterC/parameter.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/Example_01_LCD/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/Example_03_Microphone/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/WK4/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/WK6/Makefile.am",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/WK4/makefile",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/WK6/configure.ac",
+		"/home/wouter/Downloads/ES22/ES22.ino",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/WK4/makefile",
+		"/home/wouter/Downloads/WK4/makefile",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds_test/level_check_test.c",
+		"/home/wouter/.cache/.fr-WiDAD6/3_StringCalcC/stringcalc_test.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds_test/level_check_test.h",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds_test/main.c",
+		"/home/wouter/Documenten/PRC22/Practical/3_StringCalcC/stringcalc.h",
+		"/home/wouter/Documenten/PRC22/Practical/3_StringCalcC/stringcalc_test.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot_test/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot_test/robot_test.c",
+		"/home/wouter/Documenten/Overflow/app/src/main/res/values-v19/dimens.xml",
+		"/home/wouter/Documenten/Overflow/app/src/main/res/values/color.xml",
+		"/home/wouter/Documenten/Overflow/app/src/main/res/values-v19/styles.xml",
+		"/home/wouter/Documenten/Overflow/app/src/main/java/nl/overflow/android/app/EventsFragment.java",
+		"/home/wouter/Documenten/Overflow/app/src/main/java/nl/overflow/android/app/GcmBroadcastReceiver.java",
+		"/home/wouter/kluis.ino",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds_test/led_values_update_test.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot_test/robot_test.h",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot/robo_control.h",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot/robo_control.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/RP6Control_SELFTEST/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/Example_02_Buttons/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot_test/makefile",
+		"/home/wouter/Downloads/WK3_WOUTER/makefile",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/RP6BASE_EXAMPLES/Example_05_Move_04_StateMachine/main.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds/level_check.c",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds/makefile",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/volg_robot/makefile",
+		"/home/wouter/Documenten/rp6/RP6Examples_20080510/assignments.control_board/assignment_leds_test/makefile",
+		"/home/wouter/Documenten/Robot/robo_control.c",
+		"/home/wouter/Documenten/Robot/main.c",
+		"/home/wouter/Documenten/Robot/robo_control.h",
+		"/home/wouter/Documenten/PRC22/Practical/2_FileC/file_test.c",
+		"/home/wouter/Documenten/PRC22/Practical/2_FileC/file.h",
+		"/home/wouter/Documenten/auth/src/com/google/android/gms/auth/sample/helloauth/MainActivity.java",
+		"/home/wouter/Documenten/Overflow/app/build.gradle",
+		"/home/wouter/.zshrc",
+		"/usr/share/themes/Moka/gnome-shell/gnome-shell.css",
+		"/home/wouter/Downloads/apktool1.5.2/Music2/res/xml/widget_nowplaying_small.xml",
+		"/home/wouter/Downloads/apktool1.5.2/Music2/res/layout/widget_nowplaying_large.xml",
+		"/home/wouter/layout/widget_nowplaying_large.xml",
+		"/home/wouter/items.json",
+		"/home/wouter/Documenten/Broncode/Overflow/app/src/main/res/drawable/bg_card.xml",
+		"/home/wouter/Documenten/Broncode/rp6/RP6Examples_20080510/RP6CONTROL_EXAMPLES/Example_01_LCD/makefile",
+		"/home/wouter/Downloads/RP6_master.rtf",
+		"/home/wouter/.local/share/applications/Robot Loader.desktop",
+		"/home/wouter/Downloads/robotloader/robotloader_linux_x64.sh",
+		"/home/wouter/Documenten/Fontys/PRC22/Classroom/w1-1_pointer.c",
+		"/home/wouter/Documenten/Fontys/PRC22/Classroom/w1-2_function.c",
+		"/home/wouter/Documenten/Fontys/PRC22/test.c",
+		"/home/wouter/.local/share/applications/Arduino IDE.desktop",
+		"/opt/arduino/lib/arduino_icon.ico",
+		"/home/wouter/Documenten/Broncode/Arduino/test/test.ino",
+		"/home/wouter/Bureaublad/Steam.desktop",
+		"/home/wouter/Bureaublad/TrackMania Nations Forever.desktop",
+		"/home/wouter/steam.sh",
+		"/home/wouter/rafix.reg.",
+		"/home/wouter/.PlayOnLinux/wineprefix/RA2/drive_c/Program Files/Red Alert 2 Yuri's Revenge/RA2.INI",
+		"/home/wouter/Documenten/Broncode/CTest/test.c",
+		"/home/wouter/Documenten/Broncode/CTest/untitled"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"GetStr",
+			"printf",
+			"image2",
+			"image1",
+			"distanceToLCD",
+			"test_AddAndRemoveStudents",
+			"cmpstdnts",
+			"printf",
+			"avarage",
+			"array",
+			"array = NULL;",
+			"Result",
+			"FileName",
+			"printf"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"image1",
+			"image0",
+			"updateLCD",
+			"CompareStudents",
+			"Average",
+			"result = -1;",
+			"result",
+			"file_name"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/wouter/Documenten/rp6/RP6Examples_20080510/WK4/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2516,
+								2516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1039.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 292.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 417.0
+	},
+	"project": "4_SteganoC.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 186.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
