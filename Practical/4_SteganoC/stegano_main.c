@@ -62,6 +62,7 @@ main (int argc, char * argv[])
 
     SteganoMultiplex("ImageTrabant.bmp", "ImageRedFerrari.bmp");
     SteganoDemultiplex("mux_ImageTrabant.bmp_ImageRedFerrari.bmp_6.bmp", "img1.bmp", "img2.bmp");
+    SteganoMultiplexText("ImageCitroen2Cv.bmp", "TextFontys.txt");
 
     // char File0 [MAX_STRLEN];
     // char File1 [MAX_STRLEN];
