@@ -32,33 +32,33 @@
  */
 extern uint8_t SteganoGetSubstring (uint8_t Src, uint8_t SrcPos, uint8_t NrOfBits, uint8_t DestPos)
 {
-    // init variables
-    uint8_t Mask = 0;
-    uint8_t Out = 0;
+	// init variables
+	uint8_t Mask = 0;
+	uint8_t Out = 0;
 
-    // create the mask (just te number of 1's - example if NrOfBits = 4 it will generate 00001111)
-    int i = 0;
-    for (; i < NrOfBits; i++)
-    {
+	// create the mask (just te number of 1's - example if NrOfBits = 4 it will generate 00001111)
+	int i = 0;
+	for (; i < NrOfBits; i++)
+	{
 
-        Mask |= (1 << i);
-    }
+		Mask |= (1 << i);
+	}
 
-    // shift the mask to the right startposition
-    Mask = Mask << SrcPos;
+	// shift the mask to the right startposition
+	Mask = Mask << SrcPos;
 
-    // apply the mask on the source, removing all unwanted bits
-    Out = Src & Mask;
+	// apply the mask on the source, removing all unwanted bits
+	Out = Src & Mask;
 
-    // shift the bits to the right destination place
-    if(SrcPos - DestPos > 0)
-    {
-        Out = Out >> (SrcPos - DestPos);
-    }
-    else
-    {
-        Out = Out << abs(SrcPos - DestPos);
-    }
+	// shift the bits to the right destination place
+	if(SrcPos - DestPos > 0)
+	{
+		Out = Out >> (SrcPos - DestPos);
+	}
+	else
+	{
+		Out = Out << abs(SrcPos - DestPos);
+	}
     
     return Out;
 }
@@ -184,7 +184,6 @@ SteganoMultiplex (const char* File0, const char* File1)
                 uint8_t pixel1[3]; // From the hidden image
                 uint8_t pixel2[3]; // Result goes here
                 
-
                 if(0 != fread(pixel0, 3, 1, FilePtr0)) // Read the pixel from the source
                 {
                     if(0 != fread(pixel1, 3, 1, FilePtr1)) // Read the pixel from the hidden image
@@ -228,40 +227,7 @@ SteganoMultiplexText (const char* File0, const char* File1)
     FilePtr2 = fopen (buf,   "wb");
 
     // to be implemented
-    // (FILE* FilePtr, BMP_MAGIC_t* Magic, BMP_FILE_t* File, BMP_INFO_t* Info)
 
-    BMP_MAGIC_t imageMagic;
-    BMP_FILE_t  imageFile;
-    BMP_INFO_t  imageInfo;
-    ReadHdr(FilePtr0, &imageMagic, &imageFile, &imageInfo);
-
-    fseek(FilePtr1, SEEK_END, 0);
-    size_t textSize = ftell(FilePtr1);
-    rewind(FilePtr1);
-    
-    imageFile.creator1 = textSize;
-
-    WriteHdr(FilePtr0, &imageMagic, &imageFile, &imageInfo);
-
-    // uint8_t textI = 0;
-
-    int32_t heightI = 0;
-    for (; heightI < imageInfo.height; heightI++)
-    {
-        int32_t widthI = 0;
-        for (; widthI < imageInfo.width; widthI++)
-        {
-
-            // printf("&d\n", widthI);
-            // uint8_t pixel[3];
-            // uint8_t pixelNew[3];
-            // fread(pixel, 1, 3, FilePtr0);
-
-
-            // pixelNew[0] = SteganoGetSubstring()
-
-        }
-    }
 
     fclose (FilePtr0);
     fclose (FilePtr1);
@@ -285,8 +251,8 @@ SteganoDemultiplex (const char* File0, const char* File1, const char* File2)
     BMP_FILE_t image0File;
     BMP_INFO_t image0Info;
     ReadHdr(FilePtr0, &image0Magic, &image0File, &image0Info);
-    uint32_t NrBits = image0Info.nimpcolors;
-
+    
+    // Create the header for the new visible visible
     BMP_MAGIC_t image1Magic = image0Magic;
     BMP_FILE_t image1File = image0File;
     BMP_INFO_t image1Info = image0Info;
@@ -295,6 +261,7 @@ SteganoDemultiplex (const char* File0, const char* File1, const char* File2)
     image1Info.nimpcolors = 0;
     WriteHdr(FilePtr1, &image1Magic, &image1File, &image1Info);
 
+    // Create the header for the new hidden image
     BMP_MAGIC_t image2Magic = image0Magic;
     BMP_FILE_t image2File = image0File;
     BMP_INFO_t image2Info = image0Info;
@@ -303,43 +270,40 @@ SteganoDemultiplex (const char* File0, const char* File1, const char* File2)
     image2Info.nimpcolors = 0;
     WriteHdr(FilePtr2, &image2Magic, &image2File, &image2Info);
 
+    int32_t NrBits = image0Info.nimpcolors;
+
+    // Read for each row the columns
     int32_t heightI = 0;
     for (; heightI < image0Info.height; heightI++)
     {
-
-        uint8_t pixel0[3]; // From the source
-        uint8_t pixel1[3]; // For the visible image
-        uint8_t pixel2[3]; // For the hidden image
-
         int32_t widthI = 0;
         for (; widthI < image0Info.width; widthI++)
         {
-            fread(pixel0, 1, 3, FilePtr0);  // Read the pixel from the source
-
-            uint8_t mask;
+            // Read from each column the pixel
+            uint8_t pixel0[3]; // From the source
+            uint8_t pixel1[3]; // To the visible image
+            uint8_t pixel2[3]; // To the hidden image
             
-            // Get the visible image
-            mask = SteganoGetSubstring(0xff, 0, NrBits, 0);
-            pixel1[0] = pixel0[0] | mask;
-            pixel1[1] = pixel0[1] | mask;
-            pixel1[2] = pixel0[2] | mask;
-            fwrite(pixel1, 1, 3, FilePtr1);
+            if(0 != fread(pixel0, 3, 1, FilePtr0)) // Read the pixel from the source
+            {
+                // Get for each color a new color based on NrBits
+                pixel1[0] = SteganoGetSubstring(pixel0[0], 8 - NrBits, NrBits, NrBits);
+                pixel1[1] = SteganoGetSubstring(pixel0[1], 8 - NrBits, NrBits, NrBits);
+                pixel1[2] = SteganoGetSubstring(pixel0[2], 8 - NrBits, NrBits, NrBits);
 
-            // Get the hidden image
-            // mask = SteganoGetSubstring(0xff, NrBits, 8 - NrBits, 8 - NrBits);
-            pixel2[0] = SteganoGetSubstring(pixel0[0], 8 - NrBits, NrBits, 8 - NrBits);
-            pixel2[1] = SteganoGetSubstring(pixel0[1], 8 - NrBits, NrBits, 8 - NrBits);
-            pixel2[2] = SteganoGetSubstring(pixel0[2], 8 - NrBits, NrBits, 8 - NrBits);
-            // pixel2[0] = pixel0[0] | mask;
-            // pixel2[1] = pixel0[1] | mask;
-            // pixel2[2] = pixel0[2] | mask;
-            fwrite(pixel2, 1, 3, FilePtr2);
+                pixel2[0] = SteganoGetSubstring(pixel0[0], 0, NrBits, 0);
+                pixel2[1] = SteganoGetSubstring(pixel0[1], 0, NrBits, 0);
+                pixel2[2] = SteganoGetSubstring(pixel0[2], 0, NrBits, 0);
+
+                // Write the resutl to the new image
+                fwrite(pixel1, 3, 1, FilePtr1);
+                fwrite(pixel2, 3, 1, FilePtr2);                        
+            }
 
             // Clear the arrays
             memset(pixel0, 0, sizeof(pixel0));
             memset(pixel1, 0, sizeof(pixel1));
             memset(pixel2, 0, sizeof(pixel2));
-            
         }
     }
 
@@ -359,6 +323,8 @@ SteganoDemultiplexText (const char* File0, const char* File1, const char* File2)
     FilePtr0 = fopen (File0, "rb"); /* binair lezen */
     FilePtr1 = fopen (File1, "wb"); /* binair schrijven */
     FilePtr2 = fopen (File2, "wb"); /* binair schrijven */
+
+    // to be implemented
 
 
     fclose (FilePtr0);
