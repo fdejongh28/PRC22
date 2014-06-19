@@ -226,8 +226,67 @@ SteganoMultiplexText (const char* File0, const char* File1)
     FilePtr1 = fopen (File1, "rb");
     FilePtr2 = fopen (buf,   "wb");
 
-    // to be implemented
+    // Read header information from the source image
+    BMP_MAGIC_t image0Magic;
+    BMP_FILE_t image0File;
+    BMP_INFO_t image0Info;
+    ReadHdr(FilePtr0, &image0Magic, &image0File, &image0Info);
 
+    fseek(FilePtr1, 0, SEEK_END);
+    int filesize = ftell(FilePtr1);
+    rewind(FilePtr1);
+    char text[filesize];
+
+    int textCharCount = 0;
+    int textCharBitCount = 7;
+
+    // Read header information from the source image
+    BMP_MAGIC_t image2Magic = image0Magic;
+    BMP_FILE_t image2File = image0File;
+    BMP_INFO_t image2Info = image0Info;
+    image2File.creator1 = filesize;
+    WriteHdr(FilePtr2, &image2Magic, &image2File, &image2Info);
+
+    if(-1 != fread(text, filesize, 1, FilePtr1)) {
+        
+        // Read for each row the columns
+        int32_t heightI = 0;
+        for (; heightI < image0Info.height*3; heightI++)
+        {
+            int32_t widthI = 0;
+            for (; widthI < image0Info.width*3; widthI++)
+            {
+                // Read from each column the pixel
+                uint8_t pixel0 = 0; // From the source
+                uint8_t pixel1 = 0; // New
+                
+                if(0 != fread(&pixel0, 1, 1, FilePtr0)) // Read the pixel from the source
+                {
+                    if (textCharCount < filesize)
+                    {
+                    	pixel1 = SteganoGetSubstring(pixel0, 1, 7, 1) | SteganoGetSubstring(text[textCharCount], textCharBitCount, 1, 0);
+	                    fwrite(&pixel1, 1, 1, FilePtr2);
+	                    if(textCharBitCount == 0) {
+	                    	textCharCount++;
+	                    	textCharBitCount = 7;
+	                	}
+	                	else
+	                	{
+	                		textCharBitCount--;
+	                	}
+                    }
+                    else
+                    {
+	                    fwrite(&pixel0, 1, 1, FilePtr2);
+                    }
+                }
+
+                // Clear the pixels
+                pixel0 = 0;
+                pixel1 = 0;
+            }
+        }
+    }
 
     fclose (FilePtr0);
     fclose (FilePtr1);
@@ -324,8 +383,50 @@ SteganoDemultiplexText (const char* File0, const char* File1, const char* File2)
     FilePtr1 = fopen (File1, "wb"); /* binair schrijven */
     FilePtr2 = fopen (File2, "wb"); /* binair schrijven */
 
-    // to be implemented
+    // Read header information from the source image
+    BMP_MAGIC_t image0Magic;
+    BMP_FILE_t image0File;
+    BMP_INFO_t image0Info;
+    ReadHdr(FilePtr0, &image0Magic, &image0File, &image0Info);
+    
+    // Create the header for the new visible visible
+    BMP_MAGIC_t image1Magic = image0Magic;
+    BMP_FILE_t image1File = image0File;
+    BMP_INFO_t image1Info = image0Info;
+    image1File.creator1 = 0;
+    image1File.creator2 = 0;
+    image1Info.nimpcolors = 0;
+    WriteHdr(FilePtr1, &image1Magic, &image1File, &image1Info);
 
+    int32_t filesize = image0File.creator1;
+    int textCharBitCount = 0;
+    int textCharCount = 0;
+
+    int32_t heightI = 0;
+    for (; heightI < image0Info.height*3; heightI++)
+    {
+        int32_t widthI = 0;
+        for (; widthI < image0Info.width*3; widthI++)
+        {
+        	//Read from each column the pixel
+            uint8_t pixel0 = 0; // From the source
+            uint8_t pixel1 = 0; // Copy
+            uint8_t charbit = 0; // Text
+            
+            if(0 != fread(&pixel0, 1, 1, FilePtr0)) // Read the pixel from the source
+            {
+            	pixel1 = SteganoGetSubstring(pixel0, 1, 7, 1);
+            	fwrite(&pixel1, 1, 1, FilePtr1);
+
+                if (textCharCount < filesize)
+                {
+                	charbit = SteganoGetSubstring(pixel0, 0, 1, textCharBitCount);
+                	printf("%c\n", charbit);
+                	
+                }
+            }
+        }
+    }
 
     fclose (FilePtr0);
     fclose (FilePtr1);
